@@ -6,6 +6,9 @@ import by.it_academy.finance_management_user.dao.entity.UserEntity;
 import by.it_academy.finance_management_user.service.api.IUserService;
 import by.it_academy.finance_management_user.core.dto.UserDTO;
 import by.it_academy.finance_management_user.service.converter.UserConverter;
+import by.it_academy.finance_management_user.service.feign.api.AuditClientFeign;
+import by.it_academy.finance_management_user.service.feign.dto.AuditCreateDTO;
+import by.it_academy.finance_management_user.service.feign.enums.TypeEntity;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -27,10 +30,13 @@ public class UserServiceImpl implements IUserService {
     private final UserConverter converter;
     private final PasswordEncoder encoder;
 
-    public UserServiceImpl(IUsersRepository userRepository, UserConverter converter, PasswordEncoder encoder) {
+    private final AuditClientFeign auditClient;
+
+    public UserServiceImpl(IUsersRepository userRepository, UserConverter converter, PasswordEncoder encoder, AuditClientFeign auditClient) {
         this.userRepository = userRepository;
         this.converter = converter;
         this.encoder = encoder;
+        this.auditClient = auditClient;
     }
 
     @Override
@@ -41,9 +47,18 @@ public class UserServiceImpl implements IUserService {
         userDTO.setPassword(encodedPassword);
         UserEntity userEntity = converter.toEntity(userDTO);
 
+        userEntity = userRepository.saveAndFlush(userEntity);
 
+        AuditCreateDTO auditCreateDTO = AuditCreateDTO.builder()
+                .type(TypeEntity.USER)
+                .uuidUser(userEntity.getUuid())
+                .uuidEntity(userEntity.getUuid())
+                .text("User created successfully")
+                .build();
 
-        return userRepository.saveAndFlush(userEntity);
+        auditClient.createAuditAction(auditCreateDTO);
+
+        return userEntity;
     }
 
     @Override
@@ -56,7 +71,19 @@ public class UserServiceImpl implements IUserService {
     @Override
     @Transactional
     public void delete(UUID uuid) {
+        UserEntity userEntity = userRepository.findById(uuid)
+                .orElseThrow(() -> new RuntimeException("Пользователь не найден"));
+
         userRepository.deleteById(uuid);
+
+        AuditCreateDTO auditCreateDTO = AuditCreateDTO.builder()
+                .type(TypeEntity.USER)
+                .uuidUser(userEntity.getUuid())
+                .uuidEntity(userEntity.getUuid())
+                .text("User deleted successfully")
+                .build();
+
+        auditClient.createAuditAction(auditCreateDTO);
     }
 
     @Override
@@ -64,15 +91,30 @@ public class UserServiceImpl implements IUserService {
     public UserEntity update(UUID uuid, Instant udtUpdate, UserDTO userDTO) {
         UserEntity existingUser = userRepository.findById(uuid)
                 .orElseThrow(() -> new RuntimeException("Пользователь не найден"));
+
         existingUser.setMail(userDTO.getMail());
         existingUser.setFio(userDTO.getFio());
         existingUser.setRole(userDTO.getRole());
         existingUser.setStatus(userDTO.getStatus());
+
         if (userDTO.getPassword() != null) {
             existingUser.setPassword(encoder.encode(userDTO.getPassword()));
         }
-        return userRepository.saveAndFlush(existingUser);
+
+        existingUser = userRepository.saveAndFlush(existingUser);
+
+        AuditCreateDTO auditCreateDTO = AuditCreateDTO.builder()
+                .type(TypeEntity.USER)
+                .uuidUser(existingUser.getUuid())
+                .uuidEntity(existingUser.getUuid())
+                .text("User updated successfully")
+                .build();
+
+        auditClient.createAuditAction(auditCreateDTO);
+
+        return existingUser;
     }
+
 @Override
     public PageOfUserDTO getAll(Pageable pageable) {
         Page<UserEntity> userEntities = userRepository.findAll(pageable);

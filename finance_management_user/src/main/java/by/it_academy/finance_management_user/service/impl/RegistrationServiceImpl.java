@@ -126,6 +126,16 @@ public class RegistrationServiceImpl implements IRegistrationService {
 
         UserDetails userDetails = new User(userEntity.getMail(), userEntity.getPassword(), Collections.emptyList());
         String token = jwtTokenHandler.generateAccessToken(userDetails);
+
+        AuditCreateDTO auditCreateDTO = AuditCreateDTO.builder()
+                .type(TypeEntity.USER)
+                .uuidUser(userEntity.getUuid())
+                .uuidEntity(userEntity.getUuid())
+                .text("User logged in successfully")
+                .build();
+
+        auditClient.createAuditAction(auditCreateDTO);
+
         return token;
     }
 
@@ -136,6 +146,15 @@ public class RegistrationServiceImpl implements IRegistrationService {
 
         UserEntity userEntity = usersRepository.findByMail(email)
                 .orElseThrow(() -> new RuntimeException("Пользователь не найден"));
+
+        AuditCreateDTO auditCreateDTO = AuditCreateDTO.builder()
+                .type(TypeEntity.USER)
+                .uuidUser(userEntity.getUuid())
+                .uuidEntity(userEntity.getUuid())
+                .text("User info accessed")
+                .build();
+
+        auditClient.createAuditAction(auditCreateDTO);
 
         return userConverter.toDTO(userEntity);
     }
