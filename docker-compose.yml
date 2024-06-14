@@ -37,9 +37,9 @@ services:
     networks:
       - finance-network
 
-  finance_management_user:
+  finance-management-user:
     build: ./finance_management_user
-    image: user-service:1.0.3
+    image: user-service:1.0.0
     environment:
       SPRING_PROFILES_ACTIVE: docker
       SPRING_DATASOURCE_USERNAME: user_service_app
@@ -47,9 +47,9 @@ services:
     networks:
       - finance-network
 
-  finance_management_classifier:
+  finance-management-classifier:
     build: ./finance_management_classifier
-    image: classifier-service:1.0.2
+    image: classifier-service:1.0.1
     environment:
       SPRING_PROFILES_ACTIVE: docker
       SPRING_DATASOURCE_USERNAME: classifier_service_app
@@ -57,9 +57,9 @@ services:
     networks:
       - finance-network
 
-  finance_management_account:
+  finance-management-account:
     build: ./finance_management_account
-    image: account-service:1.0.1
+    image: account-service:1.0.0
     environment:
       SPRING_PROFILES_ACTIVE: docker
       SPRING_DATASOURCE_USERNAME: account_service_app
@@ -67,9 +67,9 @@ services:
     networks:
       - finance-network
 
-  finance_management_audit:
+  finance-management-audit:
     build: ./finance_management_audit
-    image: audit-service:1.0.1
+    image: audit-service:1.0.0
     environment:
       SPRING_PROFILES_ACTIVE: docker
       SPRING_DATASOURCE_USERNAME: audit_service_app

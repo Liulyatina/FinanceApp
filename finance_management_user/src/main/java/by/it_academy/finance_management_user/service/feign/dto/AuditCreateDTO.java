@@ -1,6 +1,6 @@
 package by.it_academy.finance_management_user.service.feign.dto;
 
-import by.it_academy.finance_management_user.service.feign.enums.ETypeEntity;
+import by.it_academy.finance_management_user.service.feign.enums.TypeEntity;
 import lombok.*;
 
 import java.util.UUID;
@@ -16,7 +16,7 @@ public class AuditCreateDTO {
 
     private UUID uuidUser;
     private String text;
-    private ETypeEntity type;
+    private TypeEntity type;
     private UUID uuidEntity;
 
 }

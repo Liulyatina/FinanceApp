@@ -15,7 +15,7 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 @EnableScheduling
 @EnableWebMvc
 @EnableConfigurationProperties({JWTProperty.class})
-@EnableFeignClients(basePackages = "by.it_academy.finance_management_account.controller.feign.api")
+@EnableFeignClients(basePackages = "by.it_academy.finance_management_account.service.feign.api")
 public class FinanceManagementAccountApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(FinanceManagementAccountApplication.class, args);

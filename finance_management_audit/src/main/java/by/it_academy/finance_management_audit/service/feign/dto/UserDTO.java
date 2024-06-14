@@ -1,14 +1,11 @@
 package by.it_academy.finance_management_audit.service.feign.dto;
 
-import by.it_academy.finance_management_audit.controller.feign.enums.UserStatus;
 import by.it_academy.finance_management_audit.core.enums.UserRole;
-
-import lombok.*;
-
+import by.it_academy.finance_management_audit.service.feign.enums.UserStatus;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
+import lombok.*;
 
-import java.time.Instant;
 import java.util.UUID;
 
 @Builder
@@ -21,9 +18,6 @@ import java.util.UUID;
 public class UserDTO {
 
     private UUID uuid;
-
-    private Instant dt_create;
-    private Instant dt_update;
 
     @NotBlank(message = "Email is mandatory")
     @Email(message = "Email should be valid")

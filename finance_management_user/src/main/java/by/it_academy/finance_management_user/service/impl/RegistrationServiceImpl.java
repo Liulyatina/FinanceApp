@@ -14,6 +14,9 @@ import by.it_academy.finance_management_user.dao.api.IUsersRepository;
 import by.it_academy.finance_management_user.dao.entity.UserEntity;
 import by.it_academy.finance_management_user.service.api.IRegistrationService;
 import by.it_academy.finance_management_user.core.dto.UserRegistrationDTO;
+import by.it_academy.finance_management_user.service.feign.api.AuditClientFeign;
+import by.it_academy.finance_management_user.service.feign.dto.AuditCreateDTO;
+import by.it_academy.finance_management_user.service.feign.enums.TypeEntity;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -35,11 +38,12 @@ public class RegistrationServiceImpl implements IRegistrationService {
     private final IVerificationRepository verificationRepository;
     private final UserConverter userConverter;
     private final UserHolder userHolder;
+    private final AuditClientFeign auditClient;
 
     public RegistrationServiceImpl(PasswordEncoder encoder, JwtTokenHandler jwtTokenHandler,
                                    IUsersRepository usersRepository, IUserService userService,
                                    IEmailStatusRepository emailStatusRepository, IVerificationRepository verificationRepository,
-                                   UserConverter userConverter, UserHolder userHolder) {
+                                   UserConverter userConverter, UserHolder userHolder, AuditClientFeign auditClient) {
         this.encoder = encoder;
         this.jwtTokenHandler = jwtTokenHandler;
         this.usersRepository = usersRepository;
@@ -48,6 +52,7 @@ public class RegistrationServiceImpl implements IRegistrationService {
         this.verificationRepository = verificationRepository;
         this.userConverter = userConverter;
         this.userHolder = userHolder;
+        this.auditClient = auditClient;
     }
 
     @Override
@@ -66,9 +71,16 @@ public class RegistrationServiceImpl implements IRegistrationService {
         VerificationEntity verificationEntity = new VerificationEntity();
         verificationEntity.setMail(userEntity);
         verificationEntity.setVerificationCode(verificationCode);
-
-
         verificationRepository.saveAndFlush(verificationEntity);
+
+        AuditCreateDTO auditCreateDTO = AuditCreateDTO.builder()
+                .type(TypeEntity.USER)
+                .uuidUser(userEntity.getUuid())
+                .uuidEntity(userEntity.getUuid())
+                .text("User registration successfully")
+                .build();
+
+        auditClient.createAuditAction(auditCreateDTO);
 
         userConverter.toDTO(userEntity);
     }
@@ -83,10 +95,18 @@ public class RegistrationServiceImpl implements IRegistrationService {
         UserEntity userEntity = verificationEntity.getMail();
 
         userEntity.setStatus(UserStatus.ACTIVATED);
+
+        AuditCreateDTO auditCreateDTO = AuditCreateDTO.builder()
+                .type(TypeEntity.USER)
+                .uuidUser(userEntity.getUuid())
+                .uuidEntity(userEntity.getUuid())
+                .text("User verify successfully")
+                .build();
+
+        auditClient.createAuditAction(auditCreateDTO);
+
         usersRepository.saveAndFlush(userEntity);
-
         emailStatusRepository.deleteByMail_Mail(mail);
-
         verificationRepository.delete(verificationEntity);
     }
 

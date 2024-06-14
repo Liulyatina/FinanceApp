@@ -40,6 +40,9 @@ public class UserServiceImpl implements IUserService {
         String encodedPassword = encoder.encode(userDTO.getPassword());
         userDTO.setPassword(encodedPassword);
         UserEntity userEntity = converter.toEntity(userDTO);
+
+
+
         return userRepository.saveAndFlush(userEntity);
     }
 

@@ -7,8 +7,6 @@ spring:
     username: classifier_service_app
     password: 12345
     driver-class-name: org.postgresql.Driver
-  main:
-    allow-bean-definition-overriding: true
 app:
   jwt:
     secret: bc33dbc3-f28b-45f2-9b9a-af84ef39a676

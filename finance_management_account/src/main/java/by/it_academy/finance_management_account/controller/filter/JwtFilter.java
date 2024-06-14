@@ -1,8 +1,8 @@
 package by.it_academy.finance_management_account.controller.filter;
 
-import by.it_academy.finance_management_account.controller.feign.api.UserClientFeign;
-import by.it_academy.finance_management_account.controller.feign.dto.UserDTO;
 import by.it_academy.finance_management_account.controller.utils.JwtTokenHandler;
+import by.it_academy.finance_management_account.service.feign.api.UserClientFeign;
+import by.it_academy.finance_management_account.service.feign.dto.UserDTO;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

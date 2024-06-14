@@ -7,13 +7,11 @@ spring:
     username: classifier_service_app
     password: 12345
     driver-class-name: org.postgresql.Driver
-  main:
-    allow-bean-definition-overriding: true
 app:
   jwt:
     secret: bc33dbc3-f28b-45f2-9b9a-af84ef39a676
     issuer: FinanceApp
   user-client:
-    url: http://finance_management_user:8080/cabinet
+    url: http://finance-management-user:8080/cabinet/me
   audit-client:
-    url: http://finance_management_audit:8080/audit
+    url: http://finance-management-audit:8080/audit

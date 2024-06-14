@@ -1,6 +1,6 @@
 package by.it_academy.finance_management_account.service.feign.api;
 
-import by.it_academy.finance_management_account.service.feign.dto.AuditDTO;
+import by.it_academy.finance_management_account.service.feign.dto.AuditCreateDTO;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -11,5 +11,5 @@ public interface AuditClientFeign {
 
     @PostMapping(produces = "application/json")
     void createAuditAction(@RequestHeader("Authorization") String bearerToken,
-                           @RequestBody AuditDTO auditCreateDTO);
+                           @RequestBody AuditCreateDTO auditCreateDTO);
 }

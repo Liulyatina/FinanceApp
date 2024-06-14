@@ -2,7 +2,7 @@ package by.it_academy.finance_management_audit.controller.filter;
 
 import by.it_academy.finance_management_audit.controller.feign.api.UserClientFeign;
 import by.it_academy.finance_management_audit.controller.utils.JwtTokenHandler;
-import by.it_academy.finance_management_audit.core.dto.UserAuditDTO;
+import by.it_academy.finance_management_audit.service.feign.dto.UserDTO;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -29,6 +29,7 @@ public class JwtFilter extends OncePerRequestFilter {
 
     private final UserClientFeign userClientFeign;
 
+
     public JwtFilter(JwtTokenHandler jwtHandler, UserClientFeign userClientFeign) {
         this.jwtHandler = jwtHandler;
         this.userClientFeign = userClientFeign;
@@ -52,7 +53,9 @@ public class JwtFilter extends OncePerRequestFilter {
             return;
         }
 
-        UserAuditDTO userDTO = userClientFeign.getMe(header);
+        UserDTO userDTO = userClientFeign.getMe(header);
+
+        System.out.println(userDTO.toString());
 
         UserDetails user = new User(userDTO.getUuid().toString(), header, Collections.emptyList());
 
