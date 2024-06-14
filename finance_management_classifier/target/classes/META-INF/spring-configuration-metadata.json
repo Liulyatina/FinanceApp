@@ -1,0 +1,22 @@
+{
+  "groups": [
+    {
+      "name": "app.jwt",
+      "type": "by.it_academy.finance_management_classifier.config.properties.JWTProperty",
+      "sourceType": "by.it_academy.finance_management_classifier.config.properties.JWTProperty"
+    }
+  ],
+  "properties": [
+    {
+      "name": "app.jwt.issuer",
+      "type": "java.lang.String",
+      "sourceType": "by.it_academy.finance_management_classifier.config.properties.JWTProperty"
+    },
+    {
+      "name": "app.jwt.secret",
+      "type": "java.lang.String",
+      "sourceType": "by.it_academy.finance_management_classifier.config.properties.JWTProperty"
+    }
+  ],
+  "hints": []
+}

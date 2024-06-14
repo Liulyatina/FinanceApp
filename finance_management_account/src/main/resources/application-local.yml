@@ -1,0 +1,23 @@
+server:
+  port: 8082
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/account_service
+    username: account_service_app
+    password: 12345
+    driver-class-name: org.postgresql.Driver
+  main:
+    allow-bean-definition-overriding: true
+app:
+  jwt:
+    secret: bc33dbc3-f28b-45f2-9b9a-af84ef39a676
+    issuer: FinanceApp
+  user-client:
+    url: http://localhost:8080/cabinet/me
+  audit-client:
+    url: http://localhost:8081/audit
+  category-client:
+    url: http://localhost:8081/classifier/operation/category/{uuid}
+  currency-client:
+    url: http://localhost:8081/classifier/currency/{uuid}
