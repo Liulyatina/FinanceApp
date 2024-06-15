@@ -1,6 +1,8 @@
 package by.it_academy.finance_management_audit.controller.http;
 
+import by.it_academy.finance_management_audit.core.dto.AuditCreateDTO;
 import by.it_academy.finance_management_audit.core.dto.PageOfAuditDTO;
+import by.it_academy.finance_management_audit.core.dto.UserAuditDTO;
 import by.it_academy.finance_management_audit.dao.entity.AuditEntity;
 import by.it_academy.finance_management_audit.core.dto.AuditDTO;
 import by.it_academy.finance_management_audit.service.converter.AuditConverter;
@@ -28,9 +30,9 @@ public class AuditController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public void create(@RequestBody AuditDTO auditDTO){
+    public void create(@RequestBody AuditCreateDTO userAuditDTO){
 
-        this.auditService.create(auditDTO);
+        this.auditService.create(userAuditDTO);
     }
 
     @GetMapping

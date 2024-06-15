@@ -12,10 +12,8 @@ public class AuditEntity {
     @Id
     @GeneratedValue
     private UUID uuid;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")
-    private UserEntity user;
+    @Column(name = "user_id")
+    private UUID userUuid;
 
     @Column(name = "text", nullable = false)
     private String text;
@@ -38,9 +36,10 @@ public class AuditEntity {
     public AuditEntity() {
     }
 
-    public AuditEntity(UUID uuid, UserEntity user, String text, EssenceType type, Instant dtCreate, UUID entityId) {
+    public AuditEntity(UUID uuid, UUID userUuid, String text, EssenceType type,
+                       Instant dtCreate, UUID entityId) {
         this.uuid = uuid;
-        this.user = user;
+        this.userUuid = userUuid;
         this.text = text;
         this.type = type;
         this.dtCreate = dtCreate;
@@ -55,12 +54,12 @@ public class AuditEntity {
         this.uuid = uuid;
     }
 
-    public UserEntity getUser() {
-        return user;
+    public UUID getUserUuid() {
+        return userUuid;
     }
 
-    public void setUser(UserEntity user) {
-        this.user = user;
+    public void setUserUuid(UUID userUuid) {
+        this.userUuid = userUuid;
     }
 
     public String getText() {

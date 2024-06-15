@@ -1,7 +1,8 @@
 package by.it_academy.finance_management_audit.service.impl;
 
-import by.it_academy.finance_management_audit.core.dto.AuditDTO;
+import by.it_academy.finance_management_audit.core.dto.AuditCreateDTO;
 import by.it_academy.finance_management_audit.core.dto.PageOfAuditDTO;
+import by.it_academy.finance_management_audit.core.dto.UserAuditDTO;
 import by.it_academy.finance_management_audit.dao.api.IAuditRepository;
 import by.it_academy.finance_management_audit.dao.entity.AuditEntity;
 import by.it_academy.finance_management_audit.service.api.IAuditService;
@@ -29,8 +30,8 @@ public class AuditService implements IAuditService {
     }
 
     @Override
-    public void create(AuditDTO auditDTO) {
-        AuditEntity audit = converter.toEntity(auditDTO);
+    public void create(AuditCreateDTO auditCreateDTO) {
+        AuditEntity audit = converter.toEntity(auditCreateDTO);
         auditRepository.save(audit);
     }
 

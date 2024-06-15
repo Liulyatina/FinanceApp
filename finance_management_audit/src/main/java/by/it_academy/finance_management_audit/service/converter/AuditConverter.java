@@ -1,44 +1,42 @@
 package by.it_academy.finance_management_audit.service.converter;
 
+import by.it_academy.finance_management_audit.core.dto.AuditCreateDTO;
+import by.it_academy.finance_management_audit.core.dto.AuditDTO;
 import by.it_academy.finance_management_audit.dao.entity.AuditEntity;
 import by.it_academy.finance_management_audit.service.api.IConverter;
-import by.it_academy.finance_management_audit.core.dto.AuditDTO;
 import org.springframework.stereotype.Component;
 
 @Component
-public class AuditConverter implements IConverter<AuditDTO, AuditEntity> {
-
-    private final UserConverter userConverter;
-
-    public AuditConverter(UserConverter userConverter) {
-        this.userConverter = userConverter;
-    }
+public class AuditConverter implements IConverter<AuditCreateDTO, AuditEntity> {
 
     @Override
-    public AuditEntity toEntity(AuditDTO auditDTO) {
-        if (auditDTO == null) {
-            return null;
+    public AuditEntity toEntity(AuditCreateDTO auditCreateDTO) {
+        if (auditCreateDTO == null) {
+            throw new IllegalArgumentException("AuditCreateDTO is null");
         }
-        AuditEntity audit = new AuditEntity();
-        audit.setUuid(auditDTO.getUuid());
-        audit.setUser(userConverter.toEntity(auditDTO.getUser()));
-        audit.setText(auditDTO.getText());
-        audit.setType(auditDTO.getType());
-        audit.setDtCreate(auditDTO.getDtCreate());
-        return audit;
+
+        AuditEntity auditEntity = new AuditEntity();
+        auditEntity.setUserUuid(auditCreateDTO.getUuidUser());
+        auditEntity.setType(auditCreateDTO.getType());
+        auditEntity.setEntityId(auditCreateDTO.getUuidEntity());
+        auditEntity.setText(auditCreateDTO.getText());
+
+        return auditEntity;
     }
 
-    @Override
     public AuditDTO toDTO(AuditEntity auditEntity) {
         if (auditEntity == null) {
-            return null;
+            throw new IllegalArgumentException("AuditEntity is null");
         }
-        AuditDTO auditDto = new AuditDTO();
-        auditDto.setUuid(auditEntity.getUuid());
-        auditDto.setUser(userConverter.toDTO(auditEntity.getUser()));
-        auditDto.setText(auditEntity.getText());
-        auditDto.setType(auditEntity.getType());
-        auditDto.setDtCreate(auditEntity.getDtCreate());
-        return auditDto;
+
+        AuditDTO auditDTO = new AuditDTO();
+        auditDTO.setUuid(auditEntity.getUuid());
+        auditDTO.setUuid(auditEntity.getUserUuid());
+        auditDTO.setType(auditEntity.getType());
+        auditDTO.setEntityId(auditEntity.getEntityId());
+        auditDTO.setText(auditEntity.getText());
+        auditDTO.setDtCreate(auditEntity.getDtCreate());
+
+        return auditDTO;
     }
 }

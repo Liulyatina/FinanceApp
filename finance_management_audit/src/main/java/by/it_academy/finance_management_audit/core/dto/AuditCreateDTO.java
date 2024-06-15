@@ -3,21 +3,20 @@ package by.it_academy.finance_management_audit.core.dto;
 import by.it_academy.finance_management_audit.core.enums.EssenceType;
 import lombok.*;
 
-import java.time.Instant;
 import java.util.UUID;
+
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @Getter
 @Setter
 @EqualsAndHashCode
 @ToString
-@NoArgsConstructor
-@AllArgsConstructor
-public class AuditDTO {
+public class AuditCreateDTO {
 
-    private UUID uuid;
-    private UserAuditDTO user;
+    private UUID uuidUser;
     private String text;
     private EssenceType type;
-    private UUID entityId;
-    private Instant dtCreate;
+    private UUID uuidEntity;
+
 }
