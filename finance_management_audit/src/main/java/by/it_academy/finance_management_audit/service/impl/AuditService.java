@@ -30,12 +30,14 @@ public class AuditService implements IAuditService {
     }
 
     @Override
+    @Transactional
     public void create(AuditCreateDTO auditCreateDTO) {
         AuditEntity audit = converter.toEntity(auditCreateDTO);
         auditRepository.save(audit);
     }
 
     @Override
+    @Transactional
     public AuditEntity getAuditById(UUID uuid) {
         Optional<AuditEntity> audit = this.auditRepository.findById(uuid);
         if (audit.isEmpty()) {
@@ -45,6 +47,7 @@ public class AuditService implements IAuditService {
     }
 
     @Override
+    @Transactional
     public PageOfAuditDTO getAll(Pageable pageable) {
         Page<AuditEntity> auditEntities = auditRepository.findAll(pageable);
         List<Object> auditDTOs = auditEntities.getContent().stream()
