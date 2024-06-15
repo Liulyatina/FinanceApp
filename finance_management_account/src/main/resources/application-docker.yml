@@ -16,6 +16,6 @@ app:
   audit-client:
     url: http://finance-management-audit:8080/audit
   category-client:
-    url: http://finance-management-classifir:8080/classifier/operation/category
+    url: http://finance-management-classifier:8080/classifier/operation/category
   currency-client:
-    url: http://finance-management-classifir:8080/classifier/currency
+    url: http://finance-management-classifier:8080/classifier/currency

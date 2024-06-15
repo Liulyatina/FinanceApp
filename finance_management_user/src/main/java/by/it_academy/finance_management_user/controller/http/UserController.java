@@ -47,9 +47,9 @@ public class UserController {
 
     @PutMapping("/{uuid}/dt_update/{dt_update}")
     public ResponseEntity<UserDTO> updateUser(@PathVariable("uuid") UUID uuid,
-                                              @PathVariable("dt_update") Instant dtUpdate,
+                                              @PathVariable("dt_update") Instant dt_update,
                                               @RequestBody UserDTO userDto) {
-        UserDTO updateUser = userConverter.toDTO(userService.update(uuid, dtUpdate, userDto));
+        UserDTO updateUser = userConverter.toDTO(userService.update(uuid, dt_update, userDto));
         return ResponseEntity.status(HttpStatus.OK).build();
     }
 

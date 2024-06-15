@@ -23,26 +23,26 @@ public class AuditEntity {
     private EssenceType type;
 
     @Column(name = "dt_create", nullable = false)
-    private Instant dtCreate;
+    private Instant dt_create;
 
     @Column(name = "entity_id")
     private UUID entityId;
 
     @PrePersist
     protected void onCreate() {
-        dtCreate = Instant.now();
+        dt_create = Instant.now();
     }
 
     public AuditEntity() {
     }
 
     public AuditEntity(UUID uuid, UUID userUuid, String text, EssenceType type,
-                       Instant dtCreate, UUID entityId) {
+                       Instant dt_create, UUID entityId) {
         this.uuid = uuid;
         this.userUuid = userUuid;
         this.text = text;
         this.type = type;
-        this.dtCreate = dtCreate;
+        this.dt_create = dt_create;
         this.entityId = entityId;
     }
 
@@ -78,12 +78,12 @@ public class AuditEntity {
         this.type = type;
     }
 
-    public Instant getDtCreate() {
-        return dtCreate;
+    public Instant getDt_create() {
+        return dt_create;
     }
 
-    public void setDtCreate(Instant dtCreate) {
-        this.dtCreate = dtCreate;
+    public void setDt_create(Instant dt_create) {
+        this.dt_create = dt_create;
     }
 
     public UUID getEntityId() {

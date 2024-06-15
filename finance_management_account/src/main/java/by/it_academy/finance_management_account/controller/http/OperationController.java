@@ -38,7 +38,7 @@ public class OperationController {
     }
 
 
-    @PutMapping("/{uuid_operation}")
+    @PutMapping("/{uuid}/operation")
     public ResponseEntity<OperationEntity> update(@PathVariable UUID accountUuid,
                                                            @PathVariable UUID operationUuid,
                                                            @RequestBody OperationEntity operationEntity) {
@@ -46,7 +46,7 @@ public class OperationController {
         return ResponseEntity.ok(updatedOperation);
     }
 
-    @DeleteMapping("/{uuid_operation}")
+    @DeleteMapping("/{uuid}/operation")
     public ResponseEntity<Void> delete(@PathVariable UUID accountUuid, @PathVariable UUID operationUuid) {
         operationService.delete(accountUuid, operationUuid);
         return ResponseEntity.noContent().build();

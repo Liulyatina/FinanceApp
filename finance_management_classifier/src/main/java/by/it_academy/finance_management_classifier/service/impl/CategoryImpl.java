@@ -4,17 +4,15 @@ import by.it_academy.finance_management_classifier.dao.api.ICategoryRepository;
 import by.it_academy.finance_management_classifier.dao.entity.CategoryEntity;
 import by.it_academy.finance_management_classifier.service.api.IClassifierService;
 import by.it_academy.finance_management_classifier.service.api.converter.CategoryConverter;
-import by.it_academy.finance_management_classifier.service.api.dto.CategoryDTO;
 import by.it_academy.finance_management_classifier.service.api.dto.PageOfClassifierDTO;
 import by.it_academy.finance_management_classifier.service.feign.api.AuditClientFeign;
 import by.it_academy.finance_management_classifier.service.feign.dto.AuditCreateDTO;
-import by.it_academy.finance_management_classifier.service.feign.enums.TypeEntity;
+import by.it_academy.finance_management_classifier.service.feign.enums.EssenceType;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
@@ -40,7 +38,7 @@ public class CategoryImpl implements IClassifierService<CategoryEntity> {
         categoryEntity = categoryRepository.saveAndFlush(categoryEntity);
 
         AuditCreateDTO auditCreateDTO = AuditCreateDTO.builder()
-                .type(TypeEntity.CATEGORY)
+                .type(EssenceType.CATEGORY)
                 .uuidUser(null)
                 .uuidEntity(categoryEntity.getUuid())
                 .text("Category created successfully")

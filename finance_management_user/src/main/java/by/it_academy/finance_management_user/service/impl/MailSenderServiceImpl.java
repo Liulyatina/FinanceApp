@@ -44,7 +44,7 @@ public class MailSenderServiceImpl implements IMailSenderService {
             message.setFrom("dzarankov@bk.ru");
             message.setSubject("Подтверждение регистрации");
             message.setText("Для подтверждения регистрации перейдите по следующей ссылке: " +
-                    "https://localhost:8080/api/cabinet/verification?code=" + verificationCode + "&mail=" + email);
+                    "https://localhost/api/v1/cabinet/verification?code=" + verificationCode + "&mail=" + email);
 
             try {
                 mailSender.send(message);

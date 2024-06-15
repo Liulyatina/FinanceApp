@@ -69,7 +69,7 @@ services:
 
   finance-management-audit:
     build: ./finance_management_audit
-    image: audit-service:1.0.1
+    image: audit-service:1.0.0
     environment:
       SPRING_PROFILES_ACTIVE: docker
       SPRING_DATASOURCE_USERNAME: audit_service_app

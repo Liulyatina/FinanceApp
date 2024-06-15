@@ -35,7 +35,7 @@ public class AuditConverter implements IConverter<AuditCreateDTO, AuditEntity> {
         auditDTO.setType(auditEntity.getType());
         auditDTO.setEntityId(auditEntity.getEntityId());
         auditDTO.setText(auditEntity.getText());
-        auditDTO.setDtCreate(auditEntity.getDtCreate());
+        auditDTO.setDtCreate(auditEntity.getDt_create());
 
         return auditDTO;
     }

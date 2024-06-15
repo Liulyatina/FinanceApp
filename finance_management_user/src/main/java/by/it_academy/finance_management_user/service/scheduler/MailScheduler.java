@@ -30,7 +30,7 @@ public class MailScheduler {
         this.verificationRepository = verificationRepository;
     }
 
-    @Scheduled(fixedRate = 20000)
+    @Scheduled(fixedRate = 60000)
     public void sendVerificationEmails() {
         List<UserEntity> users = usersRepository.findByStatus(UserStatus.WAITING_ACTIVATION);
 

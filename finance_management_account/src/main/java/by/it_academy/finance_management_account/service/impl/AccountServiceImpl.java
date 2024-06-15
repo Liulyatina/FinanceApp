@@ -3,12 +3,11 @@ package by.it_academy.finance_management_account.service.impl;
 import by.it_academy.finance_management_account.dao.api.IAccountRepository;
 import by.it_academy.finance_management_account.dao.entity.AccountEntity;
 import by.it_academy.finance_management_account.service.api.IAccountService;
-import by.it_academy.finance_management_account.service.api.dto.AccountDTO;
 import by.it_academy.finance_management_account.service.api.dto.PageOfAccountDTO;
 import by.it_academy.finance_management_account.service.converter.AccountConverter;
 import by.it_academy.finance_management_account.service.feign.api.AuditClientFeign;
 import by.it_academy.finance_management_account.service.feign.dto.AuditCreateDTO;
-import by.it_academy.finance_management_account.service.feign.enums.TypeEntity;
+import by.it_academy.finance_management_account.service.feign.enums.EssenceType;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -40,7 +39,7 @@ public class AccountServiceImpl implements IAccountService {
         accountEntity = accountRepository.saveAndFlush(accountEntity);
 
         AuditCreateDTO auditCreateDTO = AuditCreateDTO.builder()
-                .type(TypeEntity.ACCOUNT)
+                .type(EssenceType.ACCOUNT)
                 .uuidUser(null)
                 .uuidEntity(accountEntity.getAccountUuid())
                 .text("Account created successfully")
@@ -65,7 +64,7 @@ public class AccountServiceImpl implements IAccountService {
         accountEntity = accountRepository.saveAndFlush(accountEntity);
 
         AuditCreateDTO auditCreateDTO = AuditCreateDTO.builder()
-                .type(TypeEntity.ACCOUNT)
+                .type(EssenceType.ACCOUNT)
                 .uuidUser(null)
                 .uuidEntity(accountEntity.getAccountUuid())
                 .text("Account updated successfully")

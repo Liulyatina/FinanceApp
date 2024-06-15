@@ -2,13 +2,13 @@ by/it_academy/finance_management_classifier/controller/http/CategoryController.c
 by/it_academy/finance_management_classifier/config/SecurityConfig.class
 by/it_academy/finance_management_classifier/service/feign/enums/UserRole.class
 by/it_academy/finance_management_classifier/controller/http/CurrencyController.class
+by/it_academy/finance_management_classifier/service/feign/enums/EssenceType.class
 by/it_academy/finance_management_classifier/service/api/dto/CurrencyDTO$CurrencyDTOBuilder.class
 by/it_academy/finance_management_classifier/service/impl/CategoryImpl.class
 by/it_academy/finance_management_classifier/dao/entity/CategoryEntity.class
 by/it_academy/finance_management_classifier/controller/filter/GlobalExceptionHandler.class
 by/it_academy/finance_management_classifier/dao/entity/CurrencyEntity.class
 by/it_academy/finance_management_classifier/service/feign/enums/UserStatus.class
-by/it_academy/finance_management_classifier/service/feign/enums/TypeEntity.class
 by/it_academy/finance_management_classifier/service/api/dto/CategoryDTO.class
 by/it_academy/finance_management_classifier/controller/utils/JwtTokenHandler.class
 by/it_academy/finance_management_classifier/controller/filter/JwtFilter.class

@@ -5,7 +5,7 @@ CREATE SCHEMA IF NOT EXISTS app AUTHORIZATION audit_service_app;
 CREATE TABLE IF NOT EXISTS app.audit
 (
     uuid UUID PRIMARY KEY,
-    user_id UUID NOT NULL,
+    user_id UUID,
     text TEXT NOT NULL,
     type VARCHAR(50) NOT NULL,
     entity_id UUID,

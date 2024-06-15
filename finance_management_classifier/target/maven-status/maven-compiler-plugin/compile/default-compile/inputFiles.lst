@@ -3,7 +3,6 @@
 /Users/romamihalevic/IdeaProjects/finance_application/finance_management_classifier/src/main/java/by/it_academy/finance_management_classifier/service/api/dto/CategoryDTO.java
 /Users/romamihalevic/IdeaProjects/finance_application/finance_management_classifier/src/main/java/by/it_academy/finance_management_classifier/controller/http/CategoryController.java
 /Users/romamihalevic/IdeaProjects/finance_application/finance_management_classifier/src/main/java/by/it_academy/finance_management_classifier/controller/filter/GlobalExceptionHandler.java
-/Users/romamihalevic/IdeaProjects/finance_application/finance_management_classifier/src/main/java/by/it_academy/finance_management_classifier/service/feign/enums/TypeEntity.java
 /Users/romamihalevic/IdeaProjects/finance_application/finance_management_classifier/src/main/java/by/it_academy/finance_management_classifier/service/impl/CurrencyImpl.java
 /Users/romamihalevic/IdeaProjects/finance_application/finance_management_classifier/src/main/java/by/it_academy/finance_management_classifier/controller/utils/JwtTokenHandler.java
 /Users/romamihalevic/IdeaProjects/finance_application/finance_management_classifier/src/main/java/by/it_academy/finance_management_classifier/controller/http/CurrencyController.java
@@ -18,6 +17,7 @@
 /Users/romamihalevic/IdeaProjects/finance_application/finance_management_classifier/src/main/java/by/it_academy/finance_management_classifier/dao/entity/CategoryEntity.java
 /Users/romamihalevic/IdeaProjects/finance_application/finance_management_classifier/src/main/java/by/it_academy/finance_management_classifier/controller/filter/JwtFilter.java
 /Users/romamihalevic/IdeaProjects/finance_application/finance_management_classifier/src/main/java/by/it_academy/finance_management_classifier/service/api/dto/PageOfClassifierDTO.java
+/Users/romamihalevic/IdeaProjects/finance_application/finance_management_classifier/src/main/java/by/it_academy/finance_management_classifier/service/feign/enums/EssenceType.java
 /Users/romamihalevic/IdeaProjects/finance_application/finance_management_classifier/src/main/java/by/it_academy/finance_management_classifier/service/feign/dto/UserDTO.java
 /Users/romamihalevic/IdeaProjects/finance_application/finance_management_classifier/src/main/java/by/it_academy/finance_management_classifier/service/feign/enums/UserStatus.java
 /Users/romamihalevic/IdeaProjects/finance_application/finance_management_classifier/src/main/java/by/it_academy/finance_management_classifier/dao/api/ICurrencyRepository.java

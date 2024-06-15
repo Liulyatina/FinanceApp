@@ -18,24 +18,23 @@ public class OperationEntity {
     private String description;
 
     @Column(name = "dt_create", updatable = false)
-    private Instant dtCreate;
+    private Instant dt_create;
 
     @Column(name = "dt_update", nullable = false)
-    private Instant dtUpdate;
-
+    private Instant dt_update;
     private UUID category;
     private Double value;
     private UUID currency;
 
     public OperationEntity() {}
 
-    public OperationEntity(UUID operationUuid, Instant date, String description, Instant dtCreate,
-                           Instant dtUpdate, UUID category, Double value, UUID currency) {
+    public OperationEntity(UUID operationUuid, Instant date, String description, Instant dt_create,
+                           Instant dt_update, UUID category, Double value, UUID currency) {
         this.operationUuid = operationUuid;
         this.date = date;
         this.description = description;
-        this.dtCreate = dtCreate;
-        this.dtUpdate = dtUpdate;
+        this.dt_create = dt_create;
+        this.dt_update = dt_update;
         this.category = category;
         this.value = value;
         this.currency = currency;
@@ -43,13 +42,13 @@ public class OperationEntity {
 
     @PrePersist
     protected void onCreate() {
-        dtCreate = Instant.now();
-        dtUpdate = Instant.now();
+        Instant now = Instant.now();
+        dt_create = now;
+        dt_update = now;
     }
-
     @PreUpdate
     protected void onUpdate() {
-        dtUpdate = Instant.now();
+        dt_update = Instant.now();
     }
 
     public UUID getOperationUuid() {
@@ -76,20 +75,20 @@ public class OperationEntity {
         this.description = description;
     }
 
-    public Instant getDtCreate() {
-        return dtCreate;
+    public Instant getDt_create() {
+        return dt_create;
     }
 
-    public void setDtCreate(Instant dtCreate) {
-        this.dtCreate = dtCreate;
+    public void setDt_create(Instant dt_create) {
+        this.dt_create = dt_create;
     }
 
-    public Instant getDtUpdate() {
-        return dtUpdate;
+    public Instant getDt_update() {
+        return dt_update;
     }
 
-    public void setDtUpdate(Instant dtUpdate) {
-        this.dtUpdate = dtUpdate;
+    public void setDt_update(Instant dt_update) {
+        this.dt_update = dt_update;
     }
 
     public UUID getCategory() {

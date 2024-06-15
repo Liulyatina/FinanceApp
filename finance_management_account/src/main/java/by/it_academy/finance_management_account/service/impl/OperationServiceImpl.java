@@ -2,15 +2,13 @@ package by.it_academy.finance_management_account.service.impl;
 
 import by.it_academy.finance_management_account.dao.api.IAccountOperationRepository;
 import by.it_academy.finance_management_account.dao.api.IOperationRepository;
-import by.it_academy.finance_management_account.dao.entity.AccountEntity;
 import by.it_academy.finance_management_account.dao.entity.OperationEntity;
 import by.it_academy.finance_management_account.service.api.IOperationService;
-import by.it_academy.finance_management_account.service.api.dto.OperationDTO;
 import by.it_academy.finance_management_account.service.api.dto.PageOfAccountDTO;
 import by.it_academy.finance_management_account.service.converter.OperationConverter;
 import by.it_academy.finance_management_account.service.feign.api.AuditClientFeign;
 import by.it_academy.finance_management_account.service.feign.dto.AuditCreateDTO;
-import by.it_academy.finance_management_account.service.feign.enums.TypeEntity;
+import by.it_academy.finance_management_account.service.feign.enums.EssenceType;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -47,7 +45,7 @@ public class OperationServiceImpl implements IOperationService {
         operationEntity = operationRepository.saveAndFlush(operationEntity);
 
         AuditCreateDTO auditCreateDTO = AuditCreateDTO.builder()
-                .type(TypeEntity.OPERATION)
+                .type(EssenceType.OPERATION)
                 .uuidUser(null)
                 .uuidEntity(operationEntity.getOperationUuid())
                 .text("Operation created successfully")
@@ -66,7 +64,7 @@ public class OperationServiceImpl implements IOperationService {
         operationRepository.delete(operation);
 
         AuditCreateDTO auditCreateDTO = AuditCreateDTO.builder()
-                .type(TypeEntity.OPERATION)
+                .type(EssenceType.OPERATION)
                 .uuidUser(null)
                 .uuidEntity(operationUuid)
                 .text("Operation deleted successfully")
@@ -89,7 +87,7 @@ public class OperationServiceImpl implements IOperationService {
         existingOperation = operationRepository.saveAndFlush(existingOperation);
 
         AuditCreateDTO auditCreateDTO = AuditCreateDTO.builder()
-                .type(TypeEntity.OPERATION)
+                .type(EssenceType.OPERATION)
                 .uuidUser(null)
                 .uuidEntity(existingOperation.getOperationUuid())
                 .text("Operation updated successfully")

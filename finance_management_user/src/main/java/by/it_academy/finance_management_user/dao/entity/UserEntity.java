@@ -43,8 +43,9 @@ public class UserEntity {
 
     @PrePersist
     protected void onCreate() {
-        dt_create = Instant.now();
-        dt_update = Instant.now();
+        Instant now = Instant.now();
+        dt_create = now;
+        dt_update = now;
     }
 
     @PreUpdate

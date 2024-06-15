@@ -4,14 +4,11 @@ import by.it_academy.finance_management_classifier.dao.api.ICurrencyRepository;
 import by.it_academy.finance_management_classifier.dao.entity.CategoryEntity;
 import by.it_academy.finance_management_classifier.dao.entity.CurrencyEntity;
 import by.it_academy.finance_management_classifier.service.api.IClassifierService;
-import by.it_academy.finance_management_classifier.service.api.converter.CategoryConverter;
 import by.it_academy.finance_management_classifier.service.api.converter.CurrencyConverter;
-import by.it_academy.finance_management_classifier.service.api.dto.CategoryDTO;
-import by.it_academy.finance_management_classifier.service.api.dto.CurrencyDTO;
 import by.it_academy.finance_management_classifier.service.api.dto.PageOfClassifierDTO;
 import by.it_academy.finance_management_classifier.service.feign.api.AuditClientFeign;
 import by.it_academy.finance_management_classifier.service.feign.dto.AuditCreateDTO;
-import by.it_academy.finance_management_classifier.service.feign.enums.TypeEntity;
+import by.it_academy.finance_management_classifier.service.feign.enums.EssenceType;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -45,7 +42,7 @@ public class CurrencyImpl implements IClassifierService<CurrencyEntity> {
         currencyEntity = currencyRepository.saveAndFlush(currencyEntity);
 
         AuditCreateDTO auditCreateDTO = AuditCreateDTO.builder()
-                .type(TypeEntity.CURRENCY)
+                .type(EssenceType.CURRENCY)
                 .uuidUser(null)
                 .uuidEntity(currencyEntity.getUuid())
                 .text("Currency created successfully")
