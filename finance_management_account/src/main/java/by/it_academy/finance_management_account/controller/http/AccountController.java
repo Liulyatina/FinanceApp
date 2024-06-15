@@ -2,8 +2,7 @@ package by.it_academy.finance_management_account.controller.http;
 
 import by.it_academy.finance_management_account.dao.entity.AccountEntity;
 import by.it_academy.finance_management_account.service.api.IAccountService;
-import by.it_academy.finance_management_account.service.api.dto.PageOfAccountDTO;
-import org.springframework.data.domain.Page;
+import by.it_academy.finance_management_account.core.dto.PageOfAccountDTO;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;

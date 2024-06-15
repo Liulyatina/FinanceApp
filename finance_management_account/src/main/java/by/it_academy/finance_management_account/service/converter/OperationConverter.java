@@ -2,7 +2,7 @@ package by.it_academy.finance_management_account.service.converter;
 
 import by.it_academy.finance_management_account.dao.entity.OperationEntity;
 import by.it_academy.finance_management_account.service.api.IConverter;
-import by.it_academy.finance_management_account.service.api.dto.OperationDTO;
+import by.it_academy.finance_management_account.core.dto.OperationDTO;
 import org.springframework.stereotype.Component;
 
 @Component

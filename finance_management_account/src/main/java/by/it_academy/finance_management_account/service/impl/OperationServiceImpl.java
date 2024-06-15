@@ -4,7 +4,7 @@ import by.it_academy.finance_management_account.dao.api.IAccountOperationReposit
 import by.it_academy.finance_management_account.dao.api.IOperationRepository;
 import by.it_academy.finance_management_account.dao.entity.OperationEntity;
 import by.it_academy.finance_management_account.service.api.IOperationService;
-import by.it_academy.finance_management_account.service.api.dto.PageOfAccountDTO;
+import by.it_academy.finance_management_account.core.dto.PageOfAccountDTO;
 import by.it_academy.finance_management_account.service.converter.OperationConverter;
 import by.it_academy.finance_management_account.service.feign.api.AuditClientFeign;
 import by.it_academy.finance_management_account.service.feign.dto.AuditCreateDTO;

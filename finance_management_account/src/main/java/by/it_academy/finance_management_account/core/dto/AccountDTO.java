@@ -1,4 +1,4 @@
-package by.it_academy.finance_management_account.service.api.dto;
+package by.it_academy.finance_management_account.core.dto;
 
 import by.it_academy.finance_management_account.core.AccountType;
 import lombok.*;

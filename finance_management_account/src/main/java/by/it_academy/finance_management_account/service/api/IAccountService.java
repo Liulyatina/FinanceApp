@@ -1,7 +1,7 @@
 package by.it_academy.finance_management_account.service.api;
 
 import by.it_academy.finance_management_account.dao.entity.AccountEntity;
-import by.it_academy.finance_management_account.service.api.dto.PageOfAccountDTO;
+import by.it_academy.finance_management_account.core.dto.PageOfAccountDTO;
 import org.springframework.data.domain.Pageable;
 
 
