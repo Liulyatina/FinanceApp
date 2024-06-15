@@ -1,10 +1,12 @@
 package by.it_academy.finance_management_audit.controller.utils;
 
 import by.it_academy.finance_management_audit.config.properties.JWTProperty;
+import by.it_academy.finance_management_audit.core.enums.UserRole;
 import io.jsonwebtoken.*;
 import org.springframework.stereotype.Component;
 
 import java.util.Date;
+import java.util.concurrent.TimeUnit;
 
 @Component
 public class JwtTokenHandler {
@@ -22,6 +24,17 @@ public class JwtTokenHandler {
                 .getBody();
 
         return claims.getSubject();
+    }
+
+    public String generateAccessToken(String name, UserRole userRole) {
+        return Jwts.builder()
+                .setSubject(name)
+                .setIssuer(property.getIssuer())
+                .claim("role", userRole)
+                .setIssuedAt(new Date())
+                .setExpiration(new Date(System.currentTimeMillis() + TimeUnit.DAYS.toMillis(7))) // 1 week
+                .signWith(SignatureAlgorithm.HS512, property.getSecret())
+                .compact();
     }
 
     public Date getExpirationDate(String token) {

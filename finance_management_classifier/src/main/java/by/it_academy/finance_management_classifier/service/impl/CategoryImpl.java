@@ -6,6 +6,9 @@ import by.it_academy.finance_management_classifier.service.api.IClassifierServic
 import by.it_academy.finance_management_classifier.service.api.converter.CategoryConverter;
 import by.it_academy.finance_management_classifier.service.api.dto.CategoryDTO;
 import by.it_academy.finance_management_classifier.service.api.dto.PageOfClassifierDTO;
+import by.it_academy.finance_management_classifier.service.feign.api.AuditClientFeign;
+import by.it_academy.finance_management_classifier.service.feign.dto.AuditCreateDTO;
+import by.it_academy.finance_management_classifier.service.feign.enums.TypeEntity;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -21,17 +24,31 @@ import java.util.stream.Collectors;
 public class CategoryImpl implements IClassifierService<CategoryEntity> {
     private final ICategoryRepository categoryRepository;
     private final CategoryConverter converter;
+    private final AuditClientFeign auditClient;
 
-    public CategoryImpl(ICategoryRepository categoryRepository, CategoryConverter converter) {
+
+    public CategoryImpl(ICategoryRepository categoryRepository, CategoryConverter converter, AuditClientFeign auditClient) {
         this.categoryRepository = categoryRepository;
         this.converter = converter;
+        this.auditClient = auditClient;
     }
 
     @Override
     @Transactional
     public CategoryEntity create(CategoryEntity categoryEntity) {
         categoryEntity.setUuid(UUID.randomUUID());
-        return categoryRepository.saveAndFlush(categoryEntity);
+        categoryEntity = categoryRepository.saveAndFlush(categoryEntity);
+
+        AuditCreateDTO auditCreateDTO = AuditCreateDTO.builder()
+                .type(TypeEntity.CATEGORY)
+                .uuidUser(null)
+                .uuidEntity(categoryEntity.getUuid())
+                .text("Category created successfully")
+                .build();
+
+        auditClient.createAuditAction(auditCreateDTO);
+
+        return categoryEntity;
     }
 
     @Override

@@ -9,6 +9,9 @@ import by.it_academy.finance_management_classifier.service.api.converter.Currenc
 import by.it_academy.finance_management_classifier.service.api.dto.CategoryDTO;
 import by.it_academy.finance_management_classifier.service.api.dto.CurrencyDTO;
 import by.it_academy.finance_management_classifier.service.api.dto.PageOfClassifierDTO;
+import by.it_academy.finance_management_classifier.service.feign.api.AuditClientFeign;
+import by.it_academy.finance_management_classifier.service.feign.dto.AuditCreateDTO;
+import by.it_academy.finance_management_classifier.service.feign.enums.TypeEntity;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -26,17 +29,31 @@ public class CurrencyImpl implements IClassifierService<CurrencyEntity> {
 
     private final CurrencyConverter converter;
 
+    private final AuditClientFeign auditClient;
 
-    public CurrencyImpl(ICurrencyRepository currencyRepository, CurrencyConverter converter) {
+
+    public CurrencyImpl(ICurrencyRepository currencyRepository, CurrencyConverter converter, AuditClientFeign auditClient) {
         this.currencyRepository = currencyRepository;
         this.converter = converter;
+        this.auditClient = auditClient;
     }
 
     @Override
     @Transactional
     public CurrencyEntity create(CurrencyEntity currencyEntity) {
         currencyEntity.setUuid(UUID.randomUUID());
-        return currencyRepository.saveAndFlush(currencyEntity);
+        currencyEntity = currencyRepository.saveAndFlush(currencyEntity);
+
+        AuditCreateDTO auditCreateDTO = AuditCreateDTO.builder()
+                .type(TypeEntity.CURRENCY)
+                .uuidUser(null)
+                .uuidEntity(currencyEntity.getUuid())
+                .text("Currency created successfully")
+                .build();
+
+        auditClient.createAuditAction(auditCreateDTO);
+
+        return currencyEntity;
     }
 
     @Override

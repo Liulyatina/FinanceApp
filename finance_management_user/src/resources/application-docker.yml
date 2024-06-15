@@ -11,3 +11,5 @@ app:
   jwt:
     secret: bc33dbc3-f28b-45f2-9b9a-af84ef39a676
     issuer: FinanceApp
+  audit-client:
+    url: http://finance-management-audit:8080/audit

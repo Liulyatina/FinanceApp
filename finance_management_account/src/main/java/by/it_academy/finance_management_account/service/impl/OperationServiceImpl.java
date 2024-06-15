@@ -8,6 +8,9 @@ import by.it_academy.finance_management_account.service.api.IOperationService;
 import by.it_academy.finance_management_account.service.api.dto.OperationDTO;
 import by.it_academy.finance_management_account.service.api.dto.PageOfAccountDTO;
 import by.it_academy.finance_management_account.service.converter.OperationConverter;
+import by.it_academy.finance_management_account.service.feign.api.AuditClientFeign;
+import by.it_academy.finance_management_account.service.feign.dto.AuditCreateDTO;
+import by.it_academy.finance_management_account.service.feign.enums.TypeEntity;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -27,17 +30,32 @@ public class OperationServiceImpl implements IOperationService {
 
     private final OperationConverter converter;
 
-    public OperationServiceImpl(IOperationRepository operationRepository, IAccountOperationRepository accountOperationRepository, OperationConverter converter) {
+    private final AuditClientFeign auditClient;
+
+    public OperationServiceImpl(IOperationRepository operationRepository, IAccountOperationRepository accountOperationRepository,
+                                OperationConverter converter, AuditClientFeign auditClient) {
         this.operationRepository = operationRepository;
         this.accountOperationRepository = accountOperationRepository;
         this.converter = converter;
+        this.auditClient = auditClient;
     }
 
     @Override
     @Transactional
     public OperationEntity create(UUID accountUuid, OperationEntity operationEntity){
         operationEntity.setOperationUuid(UUID.randomUUID());
-        return operationRepository.saveAndFlush(operationEntity);
+        operationEntity = operationRepository.saveAndFlush(operationEntity);
+
+        AuditCreateDTO auditCreateDTO = AuditCreateDTO.builder()
+                .type(TypeEntity.OPERATION)
+                .uuidUser(null)
+                .uuidEntity(operationEntity.getOperationUuid())
+                .text("Operation created successfully")
+                .build();
+
+        auditClient.createAuditAction(auditCreateDTO);
+
+        return operationEntity;
     }
 
     @Override
@@ -46,6 +64,15 @@ public class OperationServiceImpl implements IOperationService {
         OperationEntity operation = accountOperationRepository.findByAccount_AccountUuidAndOperation_OperationUuid(accountUuid, operationUuid)
                 .orElseThrow(() -> new RuntimeException("Операция не найдена"));
         operationRepository.delete(operation);
+
+        AuditCreateDTO auditCreateDTO = AuditCreateDTO.builder()
+                .type(TypeEntity.OPERATION)
+                .uuidUser(null)
+                .uuidEntity(operationUuid)
+                .text("Operation deleted successfully")
+                .build();
+
+        auditClient.createAuditAction(auditCreateDTO);
     }
 
     @Override
@@ -59,7 +86,18 @@ public class OperationServiceImpl implements IOperationService {
         existingOperation.setValue(operationEntity.getValue());
         existingOperation.setCurrency(operationEntity.getCurrency());
 
-        return operationRepository.saveAndFlush(existingOperation);
+        existingOperation = operationRepository.saveAndFlush(existingOperation);
+
+        AuditCreateDTO auditCreateDTO = AuditCreateDTO.builder()
+                .type(TypeEntity.OPERATION)
+                .uuidUser(null)
+                .uuidEntity(existingOperation.getOperationUuid())
+                .text("Operation updated successfully")
+                .build();
+
+        auditClient.createAuditAction(auditCreateDTO);
+
+        return existingOperation;
     }
     @Override
     public PageOfAccountDTO getAll(UUID operationUuid, Pageable pageable) {

@@ -16,7 +16,6 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 @EnableWebMvc
 @EnableConfigurationProperties({JWTProperty.class})
 @EnableFeignClients(basePackages = "by.it_academy.finance_management_classifier.service.feign.api")
-
 public class FinanceManagementClassifierApplication {
 
 	public static void main(String[] args) {

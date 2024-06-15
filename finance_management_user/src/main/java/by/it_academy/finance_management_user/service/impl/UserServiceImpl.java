@@ -29,7 +29,6 @@ public class UserServiceImpl implements IUserService {
     private final IUsersRepository userRepository;
     private final UserConverter converter;
     private final PasswordEncoder encoder;
-
     private final AuditClientFeign auditClient;
 
     public UserServiceImpl(IUsersRepository userRepository, UserConverter converter, PasswordEncoder encoder, AuditClientFeign auditClient) {

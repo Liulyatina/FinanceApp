@@ -5,7 +5,7 @@ import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
-@FeignClient(value = "auditClient", url = "http://localhost:8081/audit")
+@FeignClient(value = "auditClientFeign", url = "${app.audit-client.url}")
 public interface AuditClientFeign {
 
     @PostMapping(produces = "application/json")

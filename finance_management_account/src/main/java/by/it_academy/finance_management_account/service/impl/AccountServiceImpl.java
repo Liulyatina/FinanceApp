@@ -6,6 +6,9 @@ import by.it_academy.finance_management_account.service.api.IAccountService;
 import by.it_academy.finance_management_account.service.api.dto.AccountDTO;
 import by.it_academy.finance_management_account.service.api.dto.PageOfAccountDTO;
 import by.it_academy.finance_management_account.service.converter.AccountConverter;
+import by.it_academy.finance_management_account.service.feign.api.AuditClientFeign;
+import by.it_academy.finance_management_account.service.feign.dto.AuditCreateDTO;
+import by.it_academy.finance_management_account.service.feign.enums.TypeEntity;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -23,15 +26,29 @@ public class AccountServiceImpl implements IAccountService {
 
     private final AccountConverter converter;
 
-    public AccountServiceImpl(IAccountRepository accountRepository, AccountConverter converter) {
+    private final AuditClientFeign auditClient;
+
+    public AccountServiceImpl(IAccountRepository accountRepository, AccountConverter converter, AuditClientFeign auditClient) {
         this.accountRepository = accountRepository;
         this.converter = converter;
+        this.auditClient = auditClient;
     }
 
     @Override
     public AccountEntity create(AccountEntity accountEntity) {
         accountEntity.setAccountUuid(UUID.randomUUID());
-        return accountRepository.saveAndFlush(accountEntity);
+        accountEntity = accountRepository.saveAndFlush(accountEntity);
+
+        AuditCreateDTO auditCreateDTO = AuditCreateDTO.builder()
+                .type(TypeEntity.ACCOUNT)
+                .uuidUser(null)
+                .uuidEntity(accountEntity.getAccountUuid())
+                .text("Account created successfully")
+                .build();
+
+        auditClient.createAuditAction(auditCreateDTO);
+
+        return accountEntity;
     }
 
     @Override
@@ -45,7 +62,18 @@ public class AccountServiceImpl implements IAccountService {
         AccountEntity existingAccount = accountRepository.findById(uuid)
                 .orElseThrow(() -> new RuntimeException("Счёт не найден"));
         accountEntity.setAccountUuid(uuid);
-        return accountRepository.saveAndFlush(accountEntity);
+        accountEntity = accountRepository.saveAndFlush(accountEntity);
+
+        AuditCreateDTO auditCreateDTO = AuditCreateDTO.builder()
+                .type(TypeEntity.ACCOUNT)
+                .uuidUser(null)
+                .uuidEntity(accountEntity.getAccountUuid())
+                .text("Account updated successfully")
+                .build();
+
+        auditClient.createAuditAction(auditCreateDTO);
+
+        return accountEntity;
     }
 
     @Override
