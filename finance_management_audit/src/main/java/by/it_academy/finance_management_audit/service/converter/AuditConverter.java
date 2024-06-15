@@ -24,7 +24,6 @@ public class AuditConverter implements IConverter<AuditDTO, AuditEntity> {
         audit.setUser(userConverter.toEntity(auditDTO.getUser()));
         audit.setText(auditDTO.getText());
         audit.setType(auditDTO.getType());
-        audit.setId(auditDTO.getId());
         audit.setDtCreate(auditDTO.getDtCreate());
         return audit;
     }
@@ -39,7 +38,6 @@ public class AuditConverter implements IConverter<AuditDTO, AuditEntity> {
         auditDto.setUser(userConverter.toDTO(auditEntity.getUser()));
         auditDto.setText(auditEntity.getText());
         auditDto.setType(auditEntity.getType());
-        auditDto.setId(auditEntity.getId());
         auditDto.setDtCreate(auditEntity.getDtCreate());
         return auditDto;
     }

@@ -1,23 +1,23 @@
-\c audit_service
+\c ваша_база_данных
 
 CREATE SCHEMA IF NOT EXISTS app AUTHORIZATION audit_service_app;
 
 CREATE TABLE IF NOT EXISTS app.users
 (
-    uuid      UUID PRIMARY KEY,
-    mail      VARCHAR(255) NOT NULL,
-    fio       VARCHAR(255) NOT NULL,
-    role      VARCHAR(50)  NOT NULL
+    uuid UUID PRIMARY KEY,
+    mail VARCHAR(255) NOT NULL,
+    fio VARCHAR(255) NOT NULL,
+    role VARCHAR(50) NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS app.audit
 (
-    uuid      UUID PRIMARY KEY,
-    user_id   UUID        NOT NULL,
-    text      TEXT        NOT NULL,
-    type      VARCHAR(50) NOT NULL,
+    uuid UUID PRIMARY KEY,
+    user_id UUID NOT NULL,
+    text TEXT NOT NULL,
+    type VARCHAR(50) NOT NULL,
     entity_id UUID,
-    dt_create TIMESTAMPTZ   NOT NULL,
+    dt_create TIMESTAMPTZ NOT NULL,
     CONSTRAINT fk_user FOREIGN KEY (user_id) REFERENCES app.users (uuid)
 );
 

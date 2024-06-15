@@ -13,17 +13,22 @@ public class AuditEntity {
     @GeneratedValue
     private UUID uuid;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
     private UserEntity user;
 
+    @Column(name = "text", nullable = false)
     private String text;
 
     @Enumerated(EnumType.STRING)
+    @Column(name = "type", nullable = false)
     private EssenceType type;
 
-    private String id;
-    @Column(name = "dt_update", nullable = false)
+    @Column(name = "dt_create", nullable = false)
     private Instant dtCreate;
+
+    @Column(name = "entity_id")
+    private UUID entityId;
 
     @PrePersist
     protected void onCreate() {
@@ -33,13 +38,13 @@ public class AuditEntity {
     public AuditEntity() {
     }
 
-    public AuditEntity(UUID uuid, UserEntity user, String text, EssenceType type, String id, Instant dtCreate) {
+    public AuditEntity(UUID uuid, UserEntity user, String text, EssenceType type, Instant dtCreate, UUID entityId) {
         this.uuid = uuid;
         this.user = user;
         this.text = text;
         this.type = type;
-        this.id = id;
         this.dtCreate = dtCreate;
+        this.entityId = entityId;
     }
 
     public UUID getUuid() {
@@ -74,20 +79,20 @@ public class AuditEntity {
         this.type = type;
     }
 
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
     public Instant getDtCreate() {
         return dtCreate;
     }
 
     public void setDtCreate(Instant dtCreate) {
         this.dtCreate = dtCreate;
+    }
+
+    public UUID getEntityId() {
+        return entityId;
+    }
+
+    public void setEntityId(UUID entityId) {
+        this.entityId = entityId;
     }
 }
 

@@ -10,10 +10,15 @@ public class UserEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID uuid;
-    @Column(unique = true)
+
+    @Column(name = "mail", unique = true, nullable = false)
     private String mail;
+
+    @Column(name = "fio", nullable = false)
     private String fio;
+
     @Enumerated(EnumType.STRING)
+    @Column(name = "role", nullable = false)
     private UserRole role;
 
     public UserEntity() {
