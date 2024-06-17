@@ -118,8 +118,11 @@ public class RegistrationServiceImpl implements IRegistrationService {
         UserEntity userEntity = usersRepository.findByMail(username)
                 .orElseThrow(() -> new IllegalArgumentException("Пользователь не найден"));
 
-        String encodedPassword = userEntity.getPassword();
+        if (!userEntity.getStatus().equals(UserStatus.ACTIVATED)) {
+            throw new IllegalArgumentException("Пользователь не активирован");
+        }
 
+        String encodedPassword = userEntity.getPassword();
         if (!encoder.matches(userLoginDTO.getPassword(), encodedPassword)) {
             throw new IllegalArgumentException("Логин или пароль неверный");
         }
@@ -138,6 +141,7 @@ public class RegistrationServiceImpl implements IRegistrationService {
 
         return token;
     }
+
 
     @Override
     public UserDTO getInfo(String token) {

@@ -5,24 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9559a35a-71f5-408f-96aa-819a90e02017" name="Changes" comment="добавил докерфайл">
-      <change beforePath="$PROJECT_DIR$/../docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../docker-compose.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../finance_management_account/src/main/resources/application-docker.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../finance_management_account/src/main/resources/application-docker.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../finance_management_account/src/main/resources/application-local.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../finance_management_account/src/main/resources/application-local.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../finance_management_account/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../finance_management_account/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../finance_management_audit/src/main/resources/application-docker.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../finance_management_audit/src/main/resources/application-docker.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../finance_management_audit/src/main/resources/application-local.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../finance_management_audit/src/main/resources/application-local.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../finance_management_audit/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../finance_management_audit/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application-docker.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application-docker.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application-local.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application-local.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application-docker.yml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application-docker.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application-local.yml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application-local.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/finance_management_classifier-1.0.0.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/finance_management_classifier-1.0.0.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/finance_management_classifier-1.0.0.jar.original" beforeDir="false" afterPath="$PROJECT_DIR$/target/finance_management_classifier-1.0.0.jar.original" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../finance_management_user/src/resources/application-docker.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../finance_management_user/src/resources/application-docker.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../finance_management_user/src/resources/application-local.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../finance_management_user/src/resources/application-local.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../finance_management_user/src/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../finance_management_user/src/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../finance_management_account/src/main/java/by/it_academy/finance_management_account/controller/http/OperationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../finance_management_account/src/main/java/by/it_academy/finance_management_account/controller/http/OperationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../finance_management_user/src/main/java/by/it_academy/finance_management_user/service/impl/RegistrationServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../finance_management_user/src/main/java/by/it_academy/finance_management_user/service/impl/RegistrationServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,52 +50,54 @@
     <option name="showLibraryContents" value="true" />
     <option name="showMembers" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Maven.finance_management_account [package].executor": "Run",
-    "Maven.finance_management_classifier [clean].executor": "Run",
-    "Maven.finance_management_classifier [install].executor": "Run",
-    "Maven.finance_management_classifier [package].executor": "Run",
-    "Maven.finance_management_classifir [clean].executor": "Run",
-    "Maven.finance_management_classifir [install].executor": "Run",
-    "Maven.finance_management_classifir [package].executor": "Run",
-    "Maven.finance_management_users [clean].executor": "Run",
-    "Maven.finance_management_users [install].executor": "Run",
-    "Maven.finance_management_users [package].executor": "Run",
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "Spring Boot.FinanceManagementClassifierApplication.executor": "Run",
-    "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/Users/romamihalevic/IdeaProjects/finance_application/finance_management_classifier",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.applicationServers",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Maven.finance_management_account [package].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.finance_management_classifier [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.finance_management_classifier [install].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.finance_management_classifier [package].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.finance_management_classifir [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.finance_management_classifir [install].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.finance_management_classifir [package].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.finance_management_users [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.finance_management_users [install].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.finance_management_users [package].executor&quot;: &quot;Run&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;Spring Boot.FinanceManagementClassifierApplication.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/romamihalevic/IdeaProjects/finance_application/finance_management_classifier/src/main/java/by/it_academy/finance_management_classifier/service/feign/enums&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.applicationServers&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/java/by/it_academy/finance_management_classifier/service/feign/enums" />
+      <recent name="$PROJECT_DIR$/src/main/java/by/it_academy/finance_management_classifier/service" />
       <recent name="$PROJECT_DIR$/src/main/resources" />
       <recent name="$PROJECT_DIR$/src/main/java/by/it_academy/finance_management_classifier/controller" />
-      <recent name="$PROJECT_DIR$/src/main/java/by/it_academy/finance_management_classifier/service" />
       <recent name="$PROJECT_DIR$/src/main/java/by/it_academy/finance_management_classifier" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="by.it_academy.finance_management_classifier.service.feign.dto" />
+      <recent name="by.it_academy.finance_management_classifier.service.feign.api" />
       <recent name="by.it_academy.finance_management_classifier.service" />
       <recent name="by.it_academy.finance_management_classifier.service.api.dto" />
       <recent name="by.it_academy.finance_management_classifier.config.properties" />
-      <recent name="by.it_academy.finance_management_classifier.controller.filter" />
     </key>
   </component>
   <component name="RunManager">
@@ -180,6 +167,8 @@
       <workItem from="1718032496966" duration="9387000" />
       <workItem from="1718119491949" duration="22484000" />
       <workItem from="1718275605543" duration="30011000" />
+      <workItem from="1718391254100" duration="20804000" />
+      <workItem from="1718617729632" duration="951000" />
     </task>
     <task id="LOCAL-00001" summary="Изменил pom">
       <option name="closed" value="true" />
