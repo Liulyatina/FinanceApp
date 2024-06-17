@@ -33,7 +33,7 @@ public class SecurityConfig {
                 .and();
 
         http.authorizeHttpRequests(requests -> requests
-                .requestMatchers("/users/**").permitAll()
+                .requestMatchers("/users/**").hasAnyRole("ADMIN")
                 .requestMatchers("/cabinet/me").authenticated()
                 .requestMatchers("/cabinet/registration", "/cabinet/verification","/cabinet/login").permitAll()
                 .anyRequest().authenticated());

@@ -8,6 +8,7 @@ import by.it_academy.finance_management_classifier.service.impl.CurrencyImpl;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -34,7 +35,6 @@ public class CurrencyController {
     public ResponseEntity<CurrencyDTO> createCurrency(@RequestBody CurrencyDTO currencyDTO) {
         CurrencyEntity entity = currencyConverter.toEntity(currencyDTO);
         CurrencyEntity createdEntity = currencyService.create(entity);
-        CurrencyDTO createdDTO = currencyConverter.toDTO(createdEntity);
-        return ResponseEntity.status(201).body(createdDTO);
+        return ResponseEntity.status(HttpStatus.OK).build();
     }
 }

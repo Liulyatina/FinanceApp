@@ -2,6 +2,7 @@ package by.it_academy.finance_management_user.security;
 
 import by.it_academy.finance_management_user.dao.entity.UserEntity;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
@@ -16,7 +17,10 @@ public class CustomUserDetails implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return Collections.emptyList();
+
+        SimpleGrantedAuthority authority = new SimpleGrantedAuthority("ROLE_"+userEntity.getRole());
+
+        return Collections.singleton(authority);
     }
 
     @Override

@@ -39,7 +39,7 @@ services:
 
   finance-management-user:
     build: ./finance_management_user
-    image: user-service:1.0.0
+    image: user-service:1.0.2
     environment:
       SPRING_PROFILES_ACTIVE: docker
       SPRING_DATASOURCE_USERNAME: user_service_app
@@ -49,7 +49,7 @@ services:
 
   finance-management-classifier:
     build: ./finance_management_classifier
-    image: classifier-service:1.0.0
+    image: classifier-service:1.0.2
     environment:
       SPRING_PROFILES_ACTIVE: docker
       SPRING_DATASOURCE_USERNAME: classifier_service_app

@@ -5,8 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9559a35a-71f5-408f-96aa-819a90e02017" name="Changes" comment="добавил докерфайл">
-      <change beforePath="$PROJECT_DIR$/../finance_management_account/src/main/java/by/it_academy/finance_management_account/controller/http/OperationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../finance_management_account/src/main/java/by/it_academy/finance_management_account/controller/http/OperationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../docker-compose.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/it_academy/finance_management_classifier/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/it_academy/finance_management_classifier/config/SecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/it_academy/finance_management_classifier/controller/http/CurrencyController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/it_academy/finance_management_classifier/controller/http/CurrencyController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../finance_management_user/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../finance_management_user/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../finance_management_user/src/main/java/by/it_academy/finance_management_user/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/../finance_management_user/src/main/java/by/it_academy/finance_management_user/config/SecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../finance_management_user/src/main/java/by/it_academy/finance_management_user/controller/http/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../finance_management_user/src/main/java/by/it_academy/finance_management_user/controller/http/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../finance_management_user/src/main/java/by/it_academy/finance_management_user/security/CustomUserDetails.java" beforeDir="false" afterPath="$PROJECT_DIR$/../finance_management_user/src/main/java/by/it_academy/finance_management_user/security/CustomUserDetails.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../finance_management_user/src/main/java/by/it_academy/finance_management_user/service/feign/api/AuditClientFeign.java" beforeDir="false" afterPath="$PROJECT_DIR$/../finance_management_user/src/main/java/by/it_academy/finance_management_user/service/feign/api/AuditClientFeign.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../finance_management_user/src/main/java/by/it_academy/finance_management_user/service/impl/RegistrationServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../finance_management_user/src/main/java/by/it_academy/finance_management_user/service/impl/RegistrationServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -168,7 +175,9 @@
       <workItem from="1718119491949" duration="22484000" />
       <workItem from="1718275605543" duration="30011000" />
       <workItem from="1718391254100" duration="20804000" />
-      <workItem from="1718617729632" duration="951000" />
+      <workItem from="1718617729632" duration="4759000" />
+      <workItem from="1718644700624" duration="138000" />
+      <workItem from="1718646187010" duration="2700000" />
     </task>
     <task id="LOCAL-00001" summary="Изменил pom">
       <option name="closed" value="true" />
